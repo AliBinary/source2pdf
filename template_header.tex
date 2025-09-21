@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper,onesided]{article}
+\documentclass[10pt,a4paper,oneside]{article}
 
 \usepackage{multicol}
 \usepackage[utf8]{inputenc}
@@ -10,31 +10,33 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{geometry}
+\usepackage{inconsolata} % Good font for codes
 
 \geometry{verbose,landscape,a4paper,tmargin=2cm,bmargin=2cm,lmargin=1cm,rmargin=1cm}
 
-\usepackage{listings}
-\usepackage{color}
-
+% Color settings and formatting code
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{bluekeyword}{rgb}{0,0,0.8}
 
-\lstset{frame=tb,
-  language=C++,
+\lstset{
+  frame=tb,
+  language=Python, % or C++
   aboveskip=1mm,
   belowskip=1mm,
   showstringspaces=false,
   columns=flexible,
-  basicstyle={\footnotesize\ttfamily},
+  basicstyle=\ttfamily\footnotesize, % Inconsolata Font
   numbers=none,
   numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
+  keywordstyle=\color{bluekeyword}\bfseries,
+  commentstyle=\color{dkgreen}\itshape,
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=false,
-  tabsize=1
+  tabsize=1,
+  morekeywords={def,import,as,return,class} % for Python
 }
 
 \setlength{\columnsep}{0.1in}
@@ -49,9 +51,18 @@
 
 \begin{document}
 
-\title{Team Notebook}
-\author{${author}}
-\maketitle
+\begin{center}
+    {\Huge\bfseries Competitive Programming Cheat Sheet \par} 
+    \vspace{2em}
+    {\LARGE\bfseries ${university} \par} 
+    \vspace{0.5em}
+    {\LARGE\bfseries ${teamName} \par}
+    \vspace{0.5em}
+    {\Large\bfseries ${teamMembers} \par}
+    \vspace{2em}
+    {\normalsize\bfseries ${date} \par}
+    \vspace{2em}
+\end{center}
 
 \begin{multicols}{3}
 \tableofcontents
@@ -60,5 +71,5 @@
 \pagebreak
 
 \begin{multicols}{3}
-\lstloadlanguages{C++,Java}
+\lstloadlanguages{C++,Python}
 
