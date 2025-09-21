@@ -44,26 +44,26 @@ Auto generate a PDF notebook from your source codes
 
 Options:
 
-    -V, --version               output the version number
-    -a --author [name]          author's name to be added in the notebook
-    -i --initials [initials]    initials of the author to be placed in the upper-right corner of all pages
-    -n --teamname [name]        name of the team to be displayed in the notebook
-    -t --teammembers [members]  names of team members to be added in the header
-    -o --output [filename]      output file for the notebook. Default to `./notebook.pdf`
-    -h, --help                  output usage information
+    -V, --version                output the version number
+    -u --university [name]       university name to be added in the notebook
+    -i --initials [initials]     initials of the university name to be placed in the upper-right corner of all pages
+    -n --teamname [name]         name of the team to be displayed in the notebook
+    -t --teammembers [members]   names of team members to be added in the header
+    -o --output [filename]       output file for the notebook. Default to `./notebook.pdf`
+    -h, --help                   output usage information
 ```
 
 ### Examples
 
 ```bash
 codes2pdf ./ /tmp/team_reference.pdf
-codes2pdf ./ --author "Shahid Beheshti University" --initials SBU --teamname "Team Alpha" --teammembers "Ali, Sara, Reza"
+codes2pdf ./ --university "Shahid Beheshti University" --initials SBU --teamname "Team Alpha" --teammembers "Ali, Sara, Reza"
 ```
 
-The second one will create a `notebook.pdf` file in the current directory, from the source code files located in the current directory and its subdirectories. The PDF will include:
+The second command will create a `notebook.pdf` file in the current directory, from the source code files located in the current directory and its subdirectories. The PDF will include:
 
-- Author name
-- Author initials in the upper-right corner
+- University name
+- Initials in the upper-right corner
 - Team name
 - Team members
 - Date of generation
