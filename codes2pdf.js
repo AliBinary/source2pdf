@@ -35,9 +35,11 @@ function walk (_path, depth) {
  * According to some tests, in windows it must be generated 3 times.
  * */
 function genpdf (ans, texPath, tmpobj, iter) {
+  const texFileName = path.basename(texPath)
+
   let tex = spawn('pdflatex', [
     '-interaction=nonstopmode',
-    texPath
+    texFileName  
   ], {
     cwd: tmpobj.name,
     env: process.env
@@ -48,7 +50,8 @@ function genpdf (ans, texPath, tmpobj, iter) {
   })
 
   tex.on('exit', function (code, signal) {
-    let outputFile = texPath.split('.')[0] + '.pdf'
+    let outputFile = path.join(tmpobj.name, texFileName.split('.')[0] + '.pdf')
+
     fs.access(outputFile, function (err) {
       if (err) {
         return console.error('Not generated ' + code + ' : ' + signal)
@@ -67,7 +70,8 @@ function genpdf (ans, texPath, tmpobj, iter) {
 }
 
 function pdflatex (doc) {
-  let tmpobj = tmp.dirSync({ unsafeCleanup: true })
+  let tmpobj = tmp.dirSync({ unsafeCleanup: true, tmpdir: 'C:/texlive/tempFolder' })
+
   let texPath = path.join(tmpobj.name, '_notebook.tex')
 
   let ans = through2()
