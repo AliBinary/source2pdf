@@ -5,60 +5,75 @@ Auto generate a PDF notebook from your source codes (useful for your ACM-ICPC ch
 
 This generator works in both Linux and Windows, so check how to install TeX Live in your OS.
 
-TeX Live for linux:
+TeX Live for Linux:
 
-    sudo aptitude install texlive
+```bash
+sudo aptitude install texlive
+```
 
 TeX Live for Windows:
 
-    download installer (install-tl-windows.exe) from https://www.tug.org/texlive/acquire-netinstall.html
-    
-    
-Also install the <u>latest version</u> of Node.js and NPM on your machine (you can download them from https://nodejs.org/en/download/).
+Download installer (`install-tl-windows.exe`) from [https://www.tug.org/texlive/acquire-netinstall.html](https://www.tug.org/texlive/acquire-netinstall.html)
 
-After installing Node.js on Linux, add this command to your ~/.bashrc:
+Also install the <u>latest version</u> of Node.js and NPM on your machine (download from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)).
 
-    export PATH="$HOME/.npm_modules/bin:$PATH"
+After installing Node.js on Linux, add this command to your `~/.bashrc`:
 
+```bash
+export PATH="$HOME/.npm_modules/bin:$PATH"
+```
 
 ## Install
 
-    sudo npm install -g codes2pdf
+```bash
+sudo npm install -g codes2pdf
+```
 
 ## Update
 
-    sudo npm update -g codes2pdf
+```bash
+sudo npm update -g codes2pdf
+```
 
 ## Use
 
-    Usage: codes2pdf <source_dir> [options]
+```bash
+Usage: codes2pdf <source_dir> [options]
 
-    Auto generate a PDF notebook from your source codes
+Auto generate a PDF notebook from your source codes
 
-    Options:
+Options:
 
-        -V, --version             output the version number
-        -a --author [name]        author's name to be added in the notebook
-        -i --initials [initials]  initials of the author to be placed in the upper-right corner of all pages
-        -o --output [filename]    output file for the notebook. Default to `./notebook.pdf`
-        -h, --help                output usage information
+    -V, --version               output the version number
+    -a --author [name]          author's name to be added in the notebook
+    -i --initials [initials]    initials of the author to be placed in the upper-right corner of all pages
+    -n --teamname [name]        name of the team to be displayed in the notebook
+    -t --teammembers [members]  names of team members to be added in the header
+    -o --output [filename]      output file for the notebook. Default to `./notebook.pdf`
+    -h, --help                  output usage information
+```
 
+### Examples
 
-example:
+```bash
+codes2pdf ./ /tmp/team_reference.pdf
+codes2pdf ./ --author "Shahid Beheshti University" --initials SBU --teamname "Team Alpha" --teammembers "Ali, Sara, Reza"
+```
 
-    codes2pdf ./ /tmp/team_reference.pdf
-    codes2pdf ./ --author "Shahid Beheshti University" --initials SBU
+The second one will create a `notebook.pdf` file in the current directory, from the source code files located in the current directory and its subdirectories. The PDF will include:
 
-The second one will create a 'notebook.pdf' file in the current directory, from the source code files which are located in the current directory and its subdirectories.
-
-The notebook generator will add your source code with syntax highlighting, additionally
-you can add .tex files which will be rendered as Latex code.
+- Author name
+- Author initials in the upper-right corner
+- Team name
+- Team members
+- Date of generation
+- Syntax-highlighted source codes and `.tex` files
 
 ## Sample PDF
 
-Here you can find a sample: https://github.com/Erfaniaa/codes2pdf/blob/master/sample_notebook.pdf
+Here you can find a sample: [sample_notebook.pdf](https://github.com/Erfaniaa/codes2pdf/blob/master/sample_notebook.pdf)
 
-(In this forked version of the original repository, the generated notebook file will have three columns in each page with a smaller font size; so you can put more source codes in a few number of pages for ACM-ICPC contests.)
+(In this forked version of the original repository, the generated notebook file will have three columns in each page with a smaller font size; this allows more source codes to fit in fewer pages, which is useful for ACM-ICPC contests.)
 
 ## Sample PDF Screenshots
 
@@ -71,6 +86,7 @@ Here you can find a sample: https://github.com/Erfaniaa/codes2pdf/blob/master/sa
 ## Notes
 
 - Try to use up to 3 "levels" in your source code.
-- Use spaces insead of underscore (in the filenames) to print a prettier TOC.
-- In this forked version of the [original repository](https://github.com/pin3da/notebook-generator), the generated notebook will have three columns in each page with a smaller line spacing. This is useful when you have a large number of different source codes and there is a limit on the number of pages for creating a cheatsheet.
+- Use spaces instead of underscores in filenames to print a prettier TOC.
+- In this forked version of the [original repository](https://github.com/pin3da/notebook-generator), the generated notebook will have three columns in each page with smaller line spacing. This is useful when you have many different source codes and want to limit the number of pages for your cheatsheet.
 - The original repository was created by [Manuel Pineda](https://github.com/pin3da/) and [Diego Restrepo](https://github.com/Diegores14).
+
