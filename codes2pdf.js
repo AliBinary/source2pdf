@@ -86,11 +86,30 @@ function pdflatex (doc) {
   return ans
 }
 
-module.exports = function (_path, output, author, initials) {
+function getFormattedDate() {
+  const now = new Date();
+
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  const month = months[now.getMonth()];
+  const day = now.getDate();
+  const year = now.getFullYear();
+
+  return `${month} ${day}, ${year}`;
+}
+
+module.exports = function (_path, output, university, initials, teamName, teamMembers) {
+  let date = getFormattedDate();
   let template = fs.readFileSync(path.join(__dirname, 'template_header.tex')).toString()
   template = template
-    .replace(`\${author}`, author)
+    .replace(`\${university}`, university)
     .replace(`\${initials}`, initials)
+    .replace(`\${teamName}`, teamName)
+    .replace(`\${teamMembers}`, teamMembers)
+    .replace(`\${date}`, date);
 
   template += walk(_path, 0)
   template += '\\end{multicols}'
