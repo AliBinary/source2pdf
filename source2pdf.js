@@ -12,7 +12,7 @@ function walk(dirPath, depth) {
   let ans = '';
   depth = Math.min(depth, section.length - 1);
 
-  fs.readdirSync(dirPath).forEach(file => {
+  fs.readdirSync(dirPath).forEach((file) => {
     if (file.startsWith('.')) return; // ignore hidden files/dirs
 
     const f = path.resolve(dirPath, file);
@@ -24,7 +24,10 @@ function walk(dirPath, depth) {
       ans += `\n${section[depth]}${path.basename(file, path.extname(f))}}\n`;
 
       if (path.extname(f) !== '.tex') {
-        ans += `\\begin{lstlisting}\n${fs.readFileSync(f, 'utf8')}\\end{lstlisting}\n`;
+        ans += `\\begin{lstlisting}\n${fs.readFileSync(
+          f,
+          'utf8'
+        )}\\end{lstlisting}\n`;
       } else {
         ans += fs.readFileSync(f, 'utf8');
       }
@@ -37,24 +40,26 @@ function walk(dirPath, depth) {
 function genpdf(ans, texPath, tmpobj, iter) {
   const texFileName = path.basename(texPath);
 
-  const tex = spawn('pdflatex', [
-    '-interaction=nonstopmode',
-    texFileName
-  ], {
+  const tex = spawn('pdflatex', ['-interaction=nonstopmode', texFileName], {
     cwd: tmpobj.name,
-    env: process.env
+    env: process.env,
   });
 
-  tex.on('error', err => {
+  tex.on('error', (err) => {
     console.error('❌ Error running pdflatex:', err.message);
   });
 
   tex.on('exit', (code, signal) => {
-    const outputFile = path.join(tmpobj.name, texFileName.replace('.tex', '.pdf'));
+    const outputFile = path.join(
+      tmpobj.name,
+      texFileName.replace('.tex', '.pdf')
+    );
 
-    fs.access(outputFile, fs.constants.F_OK, err => {
+    fs.access(outputFile, fs.constants.F_OK, (err) => {
       if (err) {
-        console.error(`❌ PDF not generated (exit code ${code}, signal ${signal})`);
+        console.error(
+          `❌ PDF not generated (exit code ${code}, signal ${signal})`
+        );
         return;
       }
 
@@ -88,15 +93,35 @@ function pdflatex(doc) {
 function getFormattedDate() {
   const now = new Date();
   const months = [
-    'January','February','March','April','May','June',
-    'July','August','September','October','November','December'
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   return `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
 }
 
-module.exports = function (srcPath, output, university, initials, teamName, teamMembers) {
+module.exports = function (
+  srcPath,
+  output,
+  university,
+  initials,
+  teamName,
+  teamMembers
+) {
   const date = getFormattedDate();
-  let template = fs.readFileSync(path.join(__dirname, 'template_header.tex'), 'utf8');
+  let template = fs.readFileSync(
+    path.join(__dirname, 'template_header.tex'),
+    'utf8'
+  );
 
   template = template
     .replace('${university}', university || '')
