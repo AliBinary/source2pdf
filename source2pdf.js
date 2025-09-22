@@ -112,23 +112,26 @@ function getFormattedDate() {
 module.exports = function (
   srcPath,
   output,
+  title,
   university,
   initials,
   teamName,
-  teamMembers
+  teamMembers,
+  date
 ) {
-  const date = getFormattedDate();
+  const today = getFormattedDate();
   let template = fs.readFileSync(
     path.join(__dirname, 'template_header.tex'),
     'utf8'
   );
 
   template = template
-    .replace('${university}', university || '')
     .replace('${initials}', initials || '')
+    .replace('${title}', title || 'Competitive Programming Cheat Sheet')
+    .replace('${university}', university || '')
     .replace('${teamName}', teamName || '')
-    .replace('${teamMembers}', teamMembers || '')
-    .replace('${date}', date);
+    .replace('${teamMembers}', teamMembers || 'Ali Ghanbari (AliBinary)')
+    .replace('${date}', date || today);
 
   template += walk(srcPath, 0);
   template += '\\end{multicols}\n\\end{document}';

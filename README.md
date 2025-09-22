@@ -14,7 +14,7 @@ Over the years, the project had accumulated some bugs that I fixed, and and I al
 - Supports `.c`, `.cpp`, `.cc`, `.java`, `.py`, `.tex` files.
 - Renders LaTeX `.tex` files directly.
 - Three-column layout per page (improved from original two-column layout).
-- Customizable **author/team info** and **date** in the notebook header.
+- Customizable **title**, **author/team info**, and **date** in the notebook header.
 
 ---
 
@@ -51,26 +51,28 @@ source2pdf <source_dir> [options]
 **Options:**
 
 ```
--V, --version             output the version number
--u, --university [name]   university name to be added in the notebook
--i, --initials [initials] initials of the university/team to be placed in the upper-right corner of all pages
--n, --teamname [name]     name of the team to be displayed in the notebook
--t, --teammembers [names] names of team members to be added in the header
--o, --output [filename]   output file for the notebook. Default: ./notebook.pdf
--h, --help                output usage information
+-V, --version                output the version number
+-o, --output [filename]      output file for the notebook. Default: ./notebook.pdf
+-t, --title [title]          title to be displayed on the first page (default: "Competitive Programming Cheat Sheet")
+-u, --university [name]      university name to be added in the notebook
+-i, --initials [initials]    initials of the university/team to be placed in the upper-right corner of all pages
+-n, --team-name [name]       name of the team to be displayed in the notebook
+-m, --team-members [names]   names of team members to be added in the header
+-d, --date [date]            date to be displayed in the notebook (default: today)
+-h, --help                   output usage information
 ```
 
 **Examples:**
 
 ```bash
 # Generate a PDF notebook from the current directory (default filename: notebook.pdf)
-source2pdf ./ 
+source2pdf ./
 
 # Generate a PDF notebook with university and team information
-source2pdf ./ --university "Sharif University of Technology" --initials SUT --teamname "Init to win it" --teammembers "Ali Ghanbari, Zahra Ghalvenave" --output ./team_notebook.pdf
+source2pdf ./ --title "ICPC Asia Regional 2025" --university "Sharif University of Technology" --initials SUT --team-name "Init to win it" --team-members "Ali Ghanbari, Zahra Ghalvenave" --output ./team_notebook.pdf
 ```
 
-> The second command will create a PDF file named `team_notebook.pdf` in the current directory, with three columns per page, a table of contents, and the provided university/team info in the header.
+> The second command will create a PDF file named `team_notebook.pdf` in the current directory, with three columns per page, a table of contents, and the provided title/university/team info in the header.
 
 ---
 
@@ -101,10 +103,9 @@ Here are a few screenshots of the generated PDF notebook:
 - **Supported File Types:** The generator supports `.c`, `.cpp`, `.cc`, `.java`, `.py`, and `.tex` files. LaTeX (`.tex`) files are rendered as-is in the notebook.
 - **PDF Layout:** The generated PDF uses a **three-column layout** per page (unlike the original two-column version), allowing more source code to fit in fewer pages.
 - **Syntax Highlighting:** Source code files are automatically syntax-highlighted using LaTeX’s `listings` package, so your code is easier to read.
-- **Customizable Header:** You can include university/team information and initials in the header of every page using the command-line options.
+- **Customizable Header:** You can include a title, university/team information, and initials in the header of every page using the command-line options.
 - **Adding Examples:** You can include `.tex` files as examples, formulas, or explanations, which will be rendered directly in the PDF.
 - **Performance Tip:** Avoid extremely large files in a single directory to keep PDF compilation fast and smooth.
-
 
 ---
 

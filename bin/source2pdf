@@ -8,12 +8,37 @@ const program = new Command();
 program
   .version('1.0.0')
   .usage('<source_dir> [options]')
-  .description('Auto generate a PDF notebook from your source codes (improved version)')
-  .option('-u, --university [name]', 'University name to be added in the notebook')
-  .option('-i, --initials [initials]', 'Initials of the university name to be placed in the upper-right corner of all pages')
-  .option('-n, --teamname [name]', 'Name of the team to be displayed in the notebook')
-  .option('-t, --teammembers [members]', 'Names of team members to be added in the header')
-  .option('-o, --output [filename]', 'Output file for the notebook. Default: ./notebook.pdf');
+  .description(
+    'Auto generate a PDF notebook from your source codes (improved version)'
+  )
+  .option(
+    '-o, --output [filename]',
+    'Output file for the notebook. Default: ./notebook.pdf'
+  )
+  .option(
+    '-t, --title [title]',
+    'Title to be displayed on the first page (default: "Competitive Programming Cheat Sheet")'
+  )
+  .option(
+    '-u, --university [name]',
+    'University name to be added in the notebook'
+  )
+  .option(
+    '-i, --initials [initials]',
+    'Initials of the university name to be placed in the upper-right corner of all pages'
+  )
+  .option(
+    '-n, --team-name [name]',
+    'Name of the team to be displayed in the notebook'
+  )
+  .option(
+    '-m, --team-members [members]',
+    'Names of team members to be added in the header'
+  )
+  .option(
+    '-d, --date [date]',
+    'Date to be displayed in the notebook (default: today)'
+  );
 
 program.parse(process.argv);
 
@@ -27,8 +52,10 @@ const options = program.opts();
 source2pdf(
   program.args[0],
   options.output || './notebook.pdf',
-  options.university || '',
-  options.initials || '',
-  options.teamname || '',
-  options.teammembers || ''
+  options.title || undefined,
+  options.university || undefined,
+  options.initials || undefined,
+  options['team-name'] || undefined,
+  options['team-members'] || undefined,
+  options.date || undefined
 );
