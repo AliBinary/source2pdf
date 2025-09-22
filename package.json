@@ -1,6 +1,6 @@
 {
   "name": "source2pdf",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "Auto generate a PDF notebook from your source codes (improved version of codes2pdf, useful for ACM-ICPC cheatsheet)",
   "main": "source2pdf.js",
   "scripts": {
