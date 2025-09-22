@@ -82,6 +82,14 @@ See an example notebook here: [notebook.pdf](https://github.com/AliBinary/source
 
 ---
 
+## Sample PDF Screenshots
+
+Here are a few screenshots of the generated PDF notebook:
+
+![Sample Notebook](images/sample_notebook.png)
+
+---
+
 ## Notes
 
 - Recommended: Use **up to 3 "levels"** in your source code directory to create a clear table of contents.
