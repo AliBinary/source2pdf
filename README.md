@@ -56,7 +56,7 @@ source2pdf <source_dir> [options]
 -t, --title [title]         title to be displayed on the first page (default: "Competitive Programming Cheat Sheet")
 -u, --university [name]     university name to be added in the notebook
 -i, --initials [initials]   initials of the university/team to be placed in the upper-right corner of all pages
--n, --team [name]       name of the team to be displayed in the notebook
+-n, --team [name]           name of the team to be displayed in the notebook
 -m, --members [names]       names of team members to be added in the header
 -d, --date [date]           date to be displayed in the notebook (default: today)
 -h, --help                  output usage information
