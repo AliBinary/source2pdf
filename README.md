@@ -78,7 +78,7 @@ source2pdf ./ --university "Sharif University of Technology" --initials SUT --te
 
 See an example notebook here: [notebook.pdf](https://github.com/AliBinary/source2pdf/blob/master/sample_notebook.pdf)
 
-> Note: The original example uses two columns per page; in this fork, the PDF has **three columns per page**, so you can fit more source code in fewer pages.
+> Note: The original project used two columns per page; in this version, the generated PDF has three columns per page, allowing you to fit more source code in fewer pages while keeping the layout clean.
 
 ---
 
