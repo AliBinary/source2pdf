@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+const source2pdf = require('../source2pdf.js');
+const { program } = require('commander');
+
+program
+  .version('1.0.0')
+  .usage('<source_dir> [options]')
+  .description('Auto generate a PDF notebook from your source codes (improved version)')
+  .option('-u, --university [name]', 'University name to be added in the notebook')
+  .option('-i, --initials [initials]', 'Initials of the university name to be placed in the upper-right corner of all pages')
+  .option('-n, --teamname [name]', 'Name of the team to be displayed in the notebook')
+  .option('-t, --teammembers [members]', 'Names of team members to be added in the header')
+  .option('-o, --output [filename]', 'Output file for the notebook. Default: ./notebook.pdf');
+
+program.parse(process.argv);
+
+if (program.args.length < 1) {
+  console.error('❌ The <source_dir> is required.\nRun `source2pdf --help`');
+  process.exit(1);
+}
+
+const options = program.opts();
+
+source2pdf(
+  program.args[0],
+  options.output || './notebook.pdf',
+  options.university || '',
+  options.initials || '',
+  options.teamname || '',
+  options.teammembers || ''
+);

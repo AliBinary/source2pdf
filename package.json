@@ -1,14 +1,14 @@
 {
-  "name": "codes2pdf",
-  "version": "1.0.5",
-  "description": "Auto generate a PDF notebook from your source codes (useful for your ACM-ICPC cheatsheet)",
-  "main": "codes2pdf.js",
+  "name": "source2pdf",
+  "version": "1.0.0",
+  "description": "Auto generate a PDF notebook from your source codes (improved version of codes2pdf, useful for ACM-ICPC cheatsheet)",
+  "main": "source2pdf.js",
   "scripts": {
     "test": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Erfaniaa/codes2pdf.git"
+    "url": "git+https://github.com/AliBinary/source2pdf.git"
   },
   "keywords": [
     "acm-icpc",
@@ -16,24 +16,25 @@
     "icpc",
     "notebook",
     "cheatsheet",
-    "pdf"
+    "pdf",
+    "latex",
+    "cli"
   ],
-  "author": "Erfan Alimohammadi <erfan.aa@gmail.com> (http://github.com/Erfaniaa)",
-  "license": "MPL-2.0",
+  "author": "AliBinary <AliGhanbariCS@gmail.com> (https://github.com/AliBinary)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Erfaniaa/codes2pdf/issues"
+    "url": "https://github.com/AliBinary/source2pdf/issues"
   },
-  "homepage": "https://github.com/Erfaniaa/codes2pdf#readme",
+  "homepage": "https://github.com/AliBinary/source2pdf#readme",
   "bin": {
-    "codes2pdf": "./bin/codes2pdf"
+    "source2pdf": "./bin/source2pdf"
   },
   "dependencies": {
-    "commander": "^2.15.1",
-    "latex": "0.0.1",
-    "through2": "^2.0.0",
-    "tmp": "0.0.33"
+    "commander": "^11.0.0",
+    "through2": "^4.0.2",
+    "tmp": "^0.2.3"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^17.1.0"
   }
 }
