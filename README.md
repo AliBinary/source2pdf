@@ -51,15 +51,15 @@ source2pdf <source_dir> [options]
 **Options:**
 
 ```
--V, --version                output the version number
--o, --output [filename]      output file for the notebook. Default: ./notebook.pdf
--t, --title [title]          title to be displayed on the first page (default: "Competitive Programming Cheat Sheet")
--u, --university [name]      university name to be added in the notebook
--i, --initials [initials]    initials of the university/team to be placed in the upper-right corner of all pages
--n, --team-name [name]       name of the team to be displayed in the notebook
--m, --team-members [names]   names of team members to be added in the header
--d, --date [date]            date to be displayed in the notebook (default: today)
--h, --help                   output usage information
+-V, --version               output the version number
+-o, --output [filename]     output file for the notebook. Default: ./notebook.pdf
+-t, --title [title]         title to be displayed on the first page (default: "Competitive Programming Cheat Sheet")
+-u, --university [name]     university name to be added in the notebook
+-i, --initials [initials]   initials of the university/team to be placed in the upper-right corner of all pages
+-n, --team [name]       name of the team to be displayed in the notebook
+-m, --members [names]       names of team members to be added in the header
+-d, --date [date]           date to be displayed in the notebook (default: today)
+-h, --help                  output usage information
 ```
 
 **Examples:**
@@ -69,7 +69,7 @@ source2pdf <source_dir> [options]
 source2pdf ./
 
 # Generate a PDF notebook with university and team information
-source2pdf ./ --title "ICPC Asia Regional 2025" --university "Sharif University of Technology" --initials SUT --team-name "Init to win it" --team-members "Ali Ghanbari, Zahra Ghalvenave" --output ./team_notebook.pdf
+source2pdf ./ --title "ICPC Asia Regional 2025" --university "Sharif University of Technology" --initials SUT --team "Init to win it" --members "Ali Ghanbari, Zahra Ghalvenave" --output ./team_notebook.pdf
 ```
 
 > The second command will create a PDF file named `team_notebook.pdf` in the current directory, with three columns per page, a table of contents, and the provided title/university/team info in the header.

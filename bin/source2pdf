@@ -28,11 +28,11 @@ program
     'Initials of the university name to be placed in the upper-right corner of all pages'
   )
   .option(
-    '-n, --team-name [name]',
+    '-n, --team [name]',
     'Name of the team to be displayed in the notebook'
   )
   .option(
-    '-m, --team-members [members]',
+    '-m, --members [members]',
     'Names of team members to be added in the header'
   )
   .option(
@@ -55,7 +55,7 @@ source2pdf(
   options.title || undefined,
   options.university || undefined,
   options.initials || undefined,
-  options['team-name'] || undefined,
-  options['team-members'] || undefined,
+  options.team || undefined,
+  options.members || undefined,
   options.date || undefined
 );
