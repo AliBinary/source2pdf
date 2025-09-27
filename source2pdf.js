@@ -8,6 +8,25 @@ const os = require('os');
 const section = ['\\section{', '\\subsection{', '\\subsubsection{'];
 const extensions = ['.cc', '.cpp', '.c', '.java', '.py', '.tex'];
 
+function escapeLatex(str) {
+  return str
+    .replace(/&/g, '\\&')
+    .replace(/%/g, '\\%')
+    .replace(/\$/g, '\\$')
+    .replace(/#/g, '\\#')
+    .replace(/_/g, '\\_')
+    .replace(/{/g, '\\{')
+    .replace(/}/g, '\\}')
+    .replace(/\^/g, '\\^{}')
+    .replace(/~/g, '\\~{}');
+}
+
+function cleanName(name) {
+  name = escapeLatex(name);
+
+  return name.replace(/^\d+\.\s*/, '');
+}
+
 function walk(dirPath, depth) {
   let ans = '';
   depth = Math.min(depth, section.length - 1);
@@ -19,9 +38,11 @@ function walk(dirPath, depth) {
     const stat = fs.lstatSync(f);
 
     if (stat.isDirectory()) {
-      ans += `\n${section[depth]}${file}}\n${walk(f, depth + 1)}`;
+      ans += `\n${section[depth]}${cleanName(file)}}\n${walk(f, depth + 1)}`;
     } else if (extensions.includes(path.extname(f))) {
-      ans += `\n${section[depth]}${path.basename(file, path.extname(f))}}\n`;
+      ans += `\n${section[depth]}${cleanName(
+        path.basename(file, path.extname(f))
+      )}}\n`;
 
       if (path.extname(f) !== '.tex') {
         ans += `\\begin{lstlisting}\n${fs.readFileSync(
