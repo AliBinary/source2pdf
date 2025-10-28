@@ -69,7 +69,7 @@ source2pdf <source_dir> [options]
 source2pdf ./
 
 # Generate a PDF notebook with university and team information
-source2pdf ./ --title "ICPC Asia Regional 2025" --university "Sharif University of Technology" --initials SUT --team "Init to win it" --members "Ali Ghanbari, Zahra Ghalvenave" --output ./team_notebook.pdf
+source2pdf ./ --title "2025 Tech Olympiad Finals - Algorithm" --university "Shahid Beheshti University" --initials SBU --team "Init to win it" --members "Ali Ghanbari, Zahra Ghalenave" --output ./team_notebook.pd
 ```
 
 > The second command will create a PDF file named `team_notebook.pdf` in the current directory, with three columns per page, a table of contents, and the provided title/university/team info in the header.
